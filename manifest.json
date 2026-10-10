@@ -1,0 +1,19 @@
+{
+  "name": "YASH Cosmos • 3D Planetary Exploration Engine",
+  "short_name": "YASH Cosmos",
+  "start_url": "/planet-jumping.html",
+  "display": "standalone",
+  "background_color": "#090807",
+  "theme_color": "#090807",
+  "orientation": "any",
+  "description": "Hyper-optimized interplanetary 3D exploration platform engineered for seamless orbital navigation across our Solar System.",
+  "icons": [
+    {
+      "src": "assets/yash-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
+

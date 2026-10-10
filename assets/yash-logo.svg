@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 36" width="37" height="36" fill="none">
+  <defs>
+    <linearGradient id="yashGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#e0e8ff" />
+    </linearGradient>
+    <filter id="subtleGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="0.6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Futuristic YASH Interstellar Monogram Emblem -->
+  <!-- Left Aerospace Blade of 'Y' -->
+  <path d="M2 3.5C2 2.12 3.12 1 4.5 1H10.8C12.1 1 13.28 1.76 13.82 2.94L18.5 13.2L11.8 19.8L2.6 7.6C2.21 7.08 2 6.44 2 5.78V3.5Z" fill="url(#yashGlow)"/>
+  
+  <!-- Right Aerospace Blade of 'Y' -->
+  <path d="M35 3.5C35 2.12 33.88 1 32.5 1H26.2C24.9 1 23.72 1.76 23.18 2.94L18.5 13.2L25.2 19.8L34.4 7.6C34.79 7.08 35 6.44 35 5.78V3.5Z" fill="url(#yashGlow)"/>
+  
+  <!-- Central Vertical Warp Drive Stem of 'Y' -->
+  <path d="M15.5 16.5L18.5 13.5L21.5 16.5V32.5C21.5 34.43 19.93 36 18.5 36C17.07 36 15.5 34.43 15.5 32.5V16.5Z" fill="url(#yashGlow)"/>
+
+  <!-- Orbital Core Ring / Cosmic Spark -->
+  <circle cx="18.5" cy="8.5" r="2.5" fill="#FFFFFF" filter="url(#subtleGlow)"/>
+  <circle cx="18.5" cy="8.5" r="1.2" fill="#0a0908"/>
+
+  <!-- Outer Kinetic Chevron Accents -->
+  <path d="M1 15C1 14.17 1.67 13.5 2.5 13.5H5.8C6.63 13.5 7.4 13.98 7.78 14.72L9.8 18.6L6.5 21.9C5.3 23.1 3.3 22.9 2.4 21.5L1 19.4V15Z" fill="#FFFFFF" opacity="0.85"/>
+  <path d="M36 15C36 14.17 35.33 13.5 34.5 13.5H31.2C30.37 13.5 29.6 13.98 29.22 14.72L27.2 18.6L30.5 21.9C31.7 23.1 33.7 22.9 34.6 21.5L36 19.4V15Z" fill="#FFFFFF" opacity="0.85"/>
+</svg>
+

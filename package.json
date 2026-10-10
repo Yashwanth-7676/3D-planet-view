@@ -1,0 +1,26 @@
+{
+  "name": "yash-3d-planet",
+  "version": "1.0.0",
+  "description": "YASH Interplanetary 3D Exploration Engine with real-time solar system telemetry and interactive portal transitions.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "3d",
+    "planet",
+    "yash",
+    "space",
+    "solar-system",
+    "canvas",
+    "express"
+  ],
+  "author": "Yash",
+  "license": "MIT",
+  "dependencies": {
+    "compression": "^1.8.2",
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}
