@@ -32,7 +32,7 @@
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#090807;user-select:none;-webkit-user-select:none}
 .experience{position:relative;width:100%;height:100%;min-height:540px;overflow:hidden;background:#0a0908;contain:layout paint}
-.stars-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.stars-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;will-change:transform;contain:strict}
 .backgrounds,.background,.shade,.transition-layer,.transition-layer video{position:absolute;inset:0;width:100%;height:100%}
 .background{object-fit:cover;opacity:0;transition:opacity .85s ease;will-change:opacity}
 .background.is-visible{opacity:1}
@@ -79,15 +79,19 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#090807;use
 .portal-heading strong{font-size:18px;margin-left:8px}
 .portal{position:relative;display:block;width:100%;aspect-ratio:320/350;padding:0;overflow:visible;border:0;border-radius:90px;background:transparent;cursor:pointer;box-shadow:none;transform:none!important}
 .portal video,.portal img{visibility:hidden;position:absolute;width:1px;height:1px;pointer-events:none}
-.portal-canvas{position:fixed;inset:0;z-index:3;width:100%;height:100%;pointer-events:none}
+.portal-canvas{position:fixed;inset:0;z-index:3;width:100%;height:100%;pointer-events:none;will-change:transform;contain:strict}
 
 /* PLANET FACTS & CONTENT */
-.planet-content{left:clamp(28px,4vw,58px);right:clamp(28px,3vw,44px);bottom:clamp(24px,3vh,30px);display:flex;justify-content:space-between;align-items:flex-end;gap:40px;z-index:5}
-.title-wrap{display:flex;flex-direction:column}
-.planet-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:8px}
-.planet-content h1{font-family:Aalto,'Arial Narrow',sans-serif;font-size:clamp(110px,20vw,290px);font-weight:400;line-height:.72;margin:0 0 -.04em;letter-spacing:0;transform:translateX(-32px);opacity:0}
+.planet-content{left:clamp(28px,12vw,170px);right:clamp(28px,3vw,44px);bottom:clamp(24px,3vh,30px);display:flex;justify-content:space-between;align-items:flex-end;gap:36px;z-index:5}
+.title-wrap{display:flex;flex-direction:column;max-width:min(480px,46vw)}
+.planet-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:6px}
+.planet-content h1{font-family:Aalto,'Arial Narrow',sans-serif;font-size:clamp(68px,10vw,140px);font-weight:400;line-height:.85;margin:0 0 4px;letter-spacing:-0.01em;transform:none;opacity:1}
+.planet-meta{display:flex;align-items:center;gap:8px;margin-top:4px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.8);font-weight:600}
+.meta-separator{opacity:.4}
+.planet-type{color:#60a5fa}
+.planet-description{max-width:440px;margin:8px 0 6px;font-size:14px;line-height:1.45;color:rgba(255,255,255,.8);text-shadow:0 1px 4px rgba(0,0,0,.85)}
 .planet-content dl{width:min(447px,34vw);margin:0;font-size:15px}
-.fact{display:grid;grid-template-columns:130px 1fr;gap:18px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.3);opacity:0}
+.fact{display:grid;grid-template-columns:130px 1fr;gap:18px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.3);opacity:1}
 .fact:last-child{border-bottom:0}
 .fact dt{font-weight:700;color:#fff}
 .fact dd{margin:0;color:rgba(255,255,255,.82)}
@@ -96,6 +100,29 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#090807;use
 .bookmark-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);backdrop-filter:blur(8px);border-radius:999px;color:#fff;font-size:13px;cursor:pointer;transition:all .2s}
 .bookmark-btn:hover{background:rgba(255,255,255,.2);border-color:#fff}
 .bookmark-btn.saved{background:#fff;color:#000;border-color:#fff}
+
+/* HOLOGRAPHIC TELEMETRY HUD */
+.telemetry-hud{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.18);
+  border-radius:14px;
+  padding:12px 16px;
+  backdrop-filter:blur(16px);
+  margin-top:12px;
+  width:min(447px,34vw);
+  transition:all .35s ease;
+}
+.telemetry-hud.collapsed{display:none}
+.hud-item{display:flex;flex-direction:column;gap:4px}
+.hud-header{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.hud-header strong{color:#fff;font-size:12px}
+.hud-bar{height:4px;border-radius:999px;background:rgba(255,255,255,.15);overflow:hidden}
+.hud-fill{height:100%;background:linear-gradient(90deg, #3a88e9, #60a5fa);border-radius:999px;transition:width .8s cubic-bezier(.22,1,.36,1)}
+.hud-footer{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;font-size:11px;color:rgba(255,255,255,.7);border-top:1px solid rgba(255,255,255,.12);padding-top:6px;margin-top:2px}
+.hud-footer strong{color:#fff}
 
 .transition-layer{display:none}
 .scene-canvas{display:none}
@@ -109,9 +136,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#090807;use
 .preloader{position:absolute;inset:0;z-index:20;background:#000;overflow:hidden}
 .preloader video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .preloader-shade{position:absolute;inset:auto 0 0;height:45%;background:linear-gradient(to bottom,transparent,#000)}
-.preloader.is-background{z-index:0}
-.preloader.is-failed{display:none}
-.preloader.is-background .preloader-shade{opacity:0}
+.preloader.is-background,.preloader.is-failed,.preload-complete .preloader{display:none!important}
 
 /* SKIP BUTTON */
 .skip-preloader-btn{
@@ -207,11 +232,14 @@ body.modal-open .custom-cursor,
 .custom-cursor.is-enter .cursor-label{opacity:1;transform:translateX(-50%) translateY(0)}
 
 /* ANIMATION STATES */
-body:not(.intro-ready) .header,body:not(.intro-ready) .planet-list,body:not(.intro-ready) .planet-content h1,body:not(.intro-ready) .planet-content .fact,body:not(.intro-ready) .actions-row{opacity:0}
+body:not(.preload-complete):not(.intro-ready) .header,body:not(.preload-complete):not(.intro-ready) .planet-list,body:not(.preload-complete):not(.intro-ready) .planet-content h1,body:not(.preload-complete):not(.intro-ready) .planet-content .fact,body:not(.preload-complete):not(.intro-ready) .planet-meta,body:not(.preload-complete):not(.intro-ready) .planet-description,body:not(.preload-complete):not(.intro-ready) .actions-row{opacity:0}
+.intro-ready .planet-content h1,.intro-ready .planet-content .planet-badge,.intro-ready .planet-meta,.intro-ready .planet-description,.intro-ready .planet-content .fact,.intro-ready .actions-row,.preload-complete .planet-content h1,.preload-complete .planet-content .planet-badge,.preload-complete .planet-meta,.preload-complete .planet-description,.preload-complete .planet-content .fact,.preload-complete .actions-row{opacity:1}
 .intro-ready .header{animation:reveal-down .8s cubic-bezier(.22,1,.36,1) .1s both}
 .intro-ready .planet-list{animation:reveal-side .8s cubic-bezier(.22,1,.36,1) .55s both}
 .content-revealing h1{animation:title-rise .95s cubic-bezier(.16,1,.3,1) both}
 .content-revealing .planet-badge{animation:fact-rise .55s cubic-bezier(.22,1,.36,1) both}
+.content-revealing .planet-meta{animation:fact-rise .6s cubic-bezier(.22,1,.36,1) .15s both}
+.content-revealing .planet-description{animation:fact-rise .65s cubic-bezier(.22,1,.36,1) .28s both}
 .content-revealing .fact{animation:fact-rise .65s cubic-bezier(.22,1,.36,1) both}
 .content-revealing .actions-row{animation:fact-rise .75s cubic-bezier(.22,1,.36,1) .95s both}
 .content-revealing .fact:nth-child(1){animation-delay:.45s}
@@ -292,10 +320,10 @@ body:not(.intro-ready) .header,body:not(.intro-ready) .planet-list,body:not(.int
 <main class="experience" data-planet="mars">
   <canvas id="stars-canvas" class="stars-canvas" aria-hidden="true"></canvas>
   <div class="backgrounds" aria-hidden="true">
-    <video id="mars-background" class="background is-visible" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/3c83091e-4046-4fd6-adbb-2edb728be79a.mp4" muted playsinline preload="auto"></video>
-    <video id="earth-background" class="background" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/fc3ded42-e845-41f3-a830-5cab512d79cd.mp4" muted playsinline preload="none"></video>
-    <video id="venus-background" class="background" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/b30f64d9-1637-477a-83df-d0fc6461a422.mp4" muted playsinline preload="none"></video>
     <canvas id="mercury-background" class="background planet-canvas-bg"></canvas>
+    <canvas id="venus-background" class="background planet-canvas-bg"></canvas>
+    <canvas id="earth-background" class="background planet-canvas-bg"></canvas>
+    <canvas id="mars-background" class="background planet-canvas-bg is-visible"></canvas>
     <canvas id="jupiter-background" class="background planet-canvas-bg"></canvas>
     <canvas id="saturn-background" class="background planet-canvas-bg"></canvas>
     <canvas id="uranus-background" class="background planet-canvas-bg"></canvas>
@@ -371,13 +399,46 @@ body:not(.intro-ready) .header,body:not(.intro-ready) .planet-list,body:not(.int
     <div class="title-wrap">
       <div class="planet-badge" id="planet-badge">SOLAR EXPLORATION // 04</div>
       <h1 id="planet-title">MARS</h1>
+      <div class="planet-meta">
+        <span class="planet-tagline" id="planet-tagline">THE RED FRONTIER</span>
+        <span class="meta-separator">•</span>
+        <span class="planet-type" id="planet-type">TERRESTRIAL PLANET</span>
+      </div>
+      <p class="planet-description" id="planet-description">Mars is home to Olympus Mons, the tallest volcano in the solar system, and ancient dried riverbeds.</p>
       <div class="actions-row">
         <button class="bookmark-btn" id="bookmark-btn" type="button">
           ★ <span id="bookmark-text">Bookmark World</span>
         </button>
+        <button class="bookmark-btn" id="hud-toggle-btn" type="button">
+          📊 <span id="hud-toggle-text">Telemetry HUD</span>
+        </button>
       </div>
     </div>
-    <dl id="facts"></dl>
+    <div>
+      <dl id="facts"></dl>
+      <div class="telemetry-hud" id="telemetry-hud">
+        <div class="hud-item">
+          <div class="hud-header">
+            <span>Orbital Velocity</span>
+            <strong id="hud-velocity">24.1 km/s</strong>
+          </div>
+          <div class="hud-bar"><div class="hud-fill" id="hud-velocity-bar" style="width:51%"></div></div>
+        </div>
+        <div class="hud-item">
+          <div class="hud-header">
+            <span>Earth Scale</span>
+            <strong id="hud-scale">0.53×</strong>
+          </div>
+          <div class="hud-bar"><div class="hud-fill" id="hud-scale-bar" style="width:53%"></div></div>
+        </div>
+        <div class="hud-footer">
+          <div><span>Sun Dist:</span> <strong id="hud-distance">1.52 AU</strong></div>
+          <div><span>Moons:</span> <strong id="hud-moons">2 Active</strong></div>
+          <div><span>Gravity:</span> <strong id="hud-gravity">3.72 m/s²</strong></div>
+          <div><span>Diameter:</span> <strong id="hud-diameter">6,779 km</strong></div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <div class="transition-layer" aria-hidden="true"><video id="transition-video" muted playsinline preload="none"></video></div>
@@ -481,15 +542,44 @@ function initStars(){
 function drawStars(now){
   if(!starCtx || document.hidden) return;
   starCtx.clearRect(0, 0, innerWidth, innerHeight);
-  const shiftX = (tY * 0.35);
-  const shiftY = (-tX * 0.35);
-  for(let i = 0; i < STAR_COUNT; i++){
-    const s = stars[i];
-    const alpha = Math.max(0.1, Math.min(1, s.baseAlpha + Math.sin(now * 0.002 + s.blinkPhase) * 0.25));
-    starCtx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
-    const px = (s.x + shiftX * s.z + innerWidth) % innerWidth;
-    const py = (s.y + shiftY * s.z + innerHeight) % innerHeight;
-    starCtx.fillRect(px, py, s.r, s.r);
+  
+  if(transitionActive){
+    const cx = innerWidth * 0.5;
+    const cy = innerHeight * 0.5;
+    starCtx.lineWidth = 1.6;
+    starCtx.strokeStyle = 'rgba(190, 225, 255, 0.85)';
+    starCtx.beginPath();
+    for(let i = 0; i < STAR_COUNT; i++){
+      const s = stars[i];
+      const dx = s.x - cx;
+      const dy = s.y - cy;
+      const dist = Math.hypot(dx, dy) || 1;
+      const streakLen = Math.min(130, dist * 0.25 * (1 + expansion * 2.8));
+      const nx = dx / dist;
+      const ny = dy / dist;
+
+      starCtx.moveTo(s.x, s.y);
+      starCtx.lineTo(s.x + nx * streakLen, s.y + ny * streakLen);
+
+      s.x += nx * (10 + expansion * 18);
+      s.y += ny * (10 + expansion * 18);
+      if(s.x < 0 || s.x > innerWidth || s.y < 0 || s.y > innerHeight){
+        s.x = cx + (Math.random() - 0.5) * 160;
+        s.y = cy + (Math.random() - 0.5) * 160;
+      }
+    }
+    starCtx.stroke();
+  } else {
+    const shiftX = (tY * 0.35);
+    const shiftY = (-tX * 0.35);
+    for(let i = 0; i < STAR_COUNT; i++){
+      const s = stars[i];
+      const alpha = Math.max(0.1, Math.min(1, s.baseAlpha + Math.sin(now * 0.002 + s.blinkPhase) * 0.25));
+      starCtx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+      const px = (s.x + shiftX * s.z + innerWidth) % innerWidth;
+      const py = (s.y + shiftY * s.z + innerHeight) % innerHeight;
+      starCtx.fillRect(px, py, s.r, s.r);
+    }
   }
 }
 
@@ -498,95 +588,143 @@ const planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uran
 const defaultStates = {
   mercury: {
     name: 'Mercury', next: 'Venus', number: '[01]', badge: 'SOLAR SYSTEM // 01',
+    tagline: 'The Swift Planet', type: 'Terrestrial Planet',
     portal: TO_VENUS, background: 'mercury-background',
-    color: '#a8a29e',
+    color: '#9e9a97', accentColor: '#b8b2aa',
+    image: 'assets/planets/mercury.jpg',
+    description: "Mercury is the smallest planet in our Solar System and closest to the Sun. Its heavily cratered surface resembles Earth's Moon.",
     facts: [
       ['Distance:', '57.9 million km (0.39 AU) from the Sun.'],
-      ['Year:', '88 Earth days per orbit.'],
-      ['Temperature:', '-180 °C at night to 430 °C by day.'],
-      ['Atmosphere:', 'Thin exosphere containing sodium and helium.']
-    ]
+      ['Year:', '88 Earth days per solar orbit.'],
+      ['Temperature:', 'Drastic swings: -180 °C at night to 430 °C by day.'],
+      ['Atmosphere:', 'Thin exosphere containing oxygen, sodium, and hydrogen.']
+    ],
+    telemetry: { gravity: '3.70 m/s²', diameter: '4,879 km', moons: 0, orbitalSpeed: '47.4 km/s' }
   },
   venus: {
     name: 'Venus', next: 'Earth', number: '[02]', badge: 'SOLAR SYSTEM // 02',
+    tagline: 'The Evening Star', type: 'Terrestrial Planet',
     portal: TO_EARTH, background: 'venus-background',
-    color: '#eab308',
+    color: '#e3bb76', accentColor: '#f5cb87',
+    image: 'assets/planets/venus.jpg',
+    description: "Venus spins in the opposite direction to most planets. Its runaway greenhouse effect makes it the hottest planet in the Solar System.",
     facts: [
-      ['Distance:', '108.2 million km from the Sun.'],
+      ['Distance:', '108.2 million km (0.72 AU) from the Sun.'],
       ['Year:', '225 Earth days.'],
-      ['Temperature:', 'Around 465 °C — hottest surface in our system.'],
-      ['Atmosphere:', 'Extremely dense, carbon dioxide with sulfuric acid.']
-    ]
+      ['Temperature:', 'Around 465 °C — hottest surface in our Solar System.'],
+      ['Atmosphere:', 'Extremely dense CO2 blanket with clouds of sulfuric acid.']
+    ],
+    telemetry: { gravity: '8.87 m/s²', diameter: '12,104 km', moons: 0, orbitalSpeed: '35.0 km/s' }
   },
   earth: {
     name: 'Earth', next: 'Mars', number: '[03]', badge: 'SOLAR SYSTEM // 03',
+    tagline: 'The Blue Marble', type: 'Terrestrial Planet',
     portal: TO_VENUS, background: 'earth-background',
-    color: '#38bdf8',
+    color: '#3a88e9', accentColor: '#5bb0ff',
+    image: 'assets/planets/earth.jpg',
+    description: "Earth is our oasis in the cosmos — the only known world harboring active oceans, dynamic atmosphere, and conscious life.",
     facts: [
-      ['Distance:', '149.6 million km from the Sun.'],
+      ['Distance:', '149.6 million km (1.00 AU) from the Sun.'],
       ['Year:', '365.25 Earth days.'],
       ['Temperature:', 'Average surface temperature around 15 °C.'],
-      ['Atmosphere:', 'Mostly nitrogen and oxygen, supporting active oceans and life.']
-    ]
+      ['Atmosphere:', '78% Nitrogen, 21% Oxygen — sheltering life and oceans.']
+    ],
+    telemetry: { gravity: '9.81 m/s²', diameter: '12,742 km', moons: 1, orbitalSpeed: '29.8 km/s' }
   },
   mars: {
     name: 'Mars', next: 'Jupiter', number: '[04]', badge: 'SOLAR SYSTEM // 04',
+    tagline: 'The Red Frontier', type: 'Terrestrial Planet',
     portal: TO_EARTH, background: 'mars-background',
-    color: '#f87171',
+    color: '#e05338', accentColor: '#ff6d50',
+    image: 'assets/planets/mars.jpg',
+    description: "Mars is home to Olympus Mons, the tallest volcano in the solar system, vast canyons, and ancient dried riverbeds.",
     facts: [
-      ['Distance:', 'About 228 million km (1.5 AU) from the Sun.'],
-      ['Year:', 'One Martian year is 687 Earth days.'],
-      ['Temperature:', 'Average -60 °C, dropping to -125 °C at polar winters.'],
-      ['Atmosphere:', 'Very thin CO2 atmosphere with planetary dust storms.']
-    ]
+      ['Distance:', 'About 228 million km (1.52 AU) from the Sun.'],
+      ['Year:', 'One Martian year is equal to 687 Earth days.'],
+      ['Temperature:', 'Average -60 °C, dropping to -125 °C at winter poles.'],
+      ['Atmosphere:', '95% Carbon dioxide with seasonal giant dust storms.']
+    ],
+    telemetry: { gravity: '3.72 m/s²', diameter: '6,779 km', moons: 2, orbitalSpeed: '24.1 km/s' }
   },
   jupiter: {
     name: 'Jupiter', next: 'Saturn', number: '[05]', badge: 'SOLAR SYSTEM // 05',
+    tagline: 'The King of Worlds', type: 'Gas Giant',
     portal: TO_VENUS, background: 'jupiter-background',
-    color: '#fb923c',
+    color: '#c99a6b', accentColor: '#e8ba8c',
+    image: 'assets/planets/jupiter.jpg',
+    description: "Jupiter is more than twice as massive as all other solar system planets combined, ruled by the centuries-old Great Red Spot.",
     facts: [
-      ['Distance:', '778.5 million km from the Sun.'],
+      ['Distance:', '778.5 million km (5.20 AU) from the Sun.'],
       ['Year:', '11.86 Earth years.'],
-      ['Temperature:', '-110 °C at cloud tops.'],
-      ['Atmosphere:', 'Immense storm systems including the Great Red Spot.']
-    ]
+      ['Temperature:', '-110 °C at upper cloud tops.'],
+      ['Atmosphere:', 'Massive swirl of Hydrogen and Helium with the Great Red Spot.']
+    ],
+    telemetry: { gravity: '24.79 m/s²', diameter: '139,820 km', moons: 95, orbitalSpeed: '13.1 km/s' }
   },
   saturn: {
     name: 'Saturn', next: 'Uranus', number: '[06]', badge: 'SOLAR SYSTEM // 06',
+    tagline: 'The Jewel of the Solar System', type: 'Gas Giant',
     portal: TO_EARTH, background: 'saturn-background',
-    color: '#facc15',
+    color: '#dfbc77', accentColor: '#fae09c',
+    image: 'assets/planets/saturn.jpg',
+    description: "Adorned with thousands of majestic ringlets composed of billions of chunks of ice, rock, and ancient cometary debris.",
     facts: [
-      ['Distance:', '1.43 billion km from the Sun.'],
+      ['Distance:', '1.43 billion km (9.58 AU) from the Sun.'],
       ['Year:', '29.45 Earth years.'],
-      ['Temperature:', 'Around -140 °C.'],
-      ['Atmosphere:', 'Hydrogen & helium adorned by extensive icy ring systems.']
-    ]
+      ['Temperature:', 'Around -140 °C across cloud tops.'],
+      ['Atmosphere:', 'Hydrogen and Helium adorned by spectacular icy rings.']
+    ],
+    telemetry: { gravity: '10.44 m/s²', diameter: '116,460 km', moons: 146, orbitalSpeed: '9.7 km/s' }
   },
   uranus: {
     name: 'Uranus', next: 'Neptune', number: '[07]', badge: 'SOLAR SYSTEM // 07',
+    tagline: 'The Sideways Ice Giant', type: 'Ice Giant',
     portal: TO_VENUS, background: 'uranus-background',
-    color: '#2dd4bf',
+    color: '#76cdd8', accentColor: '#99eef7',
+    image: 'assets/planets/uranus.jpg',
+    description: "Uranus rotates at an extraordinary 98-degree axial tilt, rolling on its side like a bowling ball along its 84-year orbit.",
     facts: [
-      ['Distance:', '2.87 billion km from the Sun.'],
+      ['Distance:', '2.87 billion km (19.2 AU) from the Sun.'],
       ['Year:', '84 Earth years.'],
       ['Temperature:', '-195 °C, coldest atmosphere in our Solar System.'],
       ['Atmosphere:', 'Methane rich cyan atmosphere with a 98° axial tilt.']
-    ]
+    ],
+    telemetry: { gravity: '8.69 m/s²', diameter: '50,724 km', moons: 28, orbitalSpeed: '6.8 km/s' }
   },
   neptune: {
     name: 'Neptune', next: 'Mercury', number: '[08]', badge: 'SOLAR SYSTEM // 08',
+    tagline: 'The Windy Abyss', type: 'Ice Giant',
     portal: TO_EARTH, background: 'neptune-background',
-    color: '#60a5fa',
+    color: '#3f67e6', accentColor: '#6b8fff',
+    image: 'assets/planets/neptune.jpg',
+    description: "Neptune is dark, frigid, and whipped by supersonic winds exceeding 2,100 km/h in deep blue high-pressure methane clouds.",
     facts: [
-      ['Distance:', '4.50 billion km from the Sun.'],
+      ['Distance:', '4.50 billion km (30.1 AU) from the Sun.'],
       ['Year:', '164.8 Earth years.'],
       ['Temperature:', 'Average -200 °C.'],
       ['Atmosphere:', 'Supersonic winds surpassing 2,100 km/h in deep blue clouds.']
-    ]
+    ],
+    telemetry: { gravity: '11.15 m/s²', diameter: '49,244 km', moons: 16, orbitalSpeed: '5.4 km/s' }
   }
 };
 
 let states = defaultStates;
+
+/* PRELOAD AUTHENTIC NASA PLANETARY PHOTOGRAPHS */
+const planetImageMap = {};
+planets.forEach(p => {
+  const id = p.toLowerCase();
+  const img = new Image();
+  img.src = `assets/planets/${id}.jpg`;
+  img.onload = () => {
+    if (typeof renderBackgroundForPlanet === 'function' && current === id) {
+      renderBackgroundForPlanet(id, true);
+    }
+  };
+  planetImageMap[id] = img;
+});
+window.planetImageMap = planetImageMap;
+
 let current = 'mars', busy = false, rendered = false, frozen = false;
 let tX = 0, tY = 0, rotX = 0, rotY = 0, expansion = 0, maskScale = 0, canvasOpacity = 1, transitionActive = false, last = 0;
 let backendLive = false, userFavorites = new Set(['mars']), jumpCounter = 0;
@@ -733,17 +871,51 @@ function once(el, ev){
   return new Promise(r => el.addEventListener(ev, () => r(), {once:true}));
 }
 
-/* FAST BACKEND SYNC */
+/* CACHED DOM REFERENCES */
+const dom = {
+  planetTitle: $('#planet-title'),
+  planetTagline: $('#planet-tagline'),
+  planetType: $('#planet-type'),
+  planetDescription: $('#planet-description'),
+  nextName: $('#next-name'),
+  nextNumber: $('#next-number'),
+  planetBadge: $('#planet-badge'),
+  hudVelocity: $('#hud-velocity'),
+  hudVelocityBar: $('#hud-velocity-bar'),
+  hudScale: $('#hud-scale'),
+  hudScaleBar: $('#hud-scale-bar'),
+  hudDistance: $('#hud-distance'),
+  hudMoons: $('#hud-moons'),
+  hudGravity: $('#hud-gravity'),
+  hudDiameter: $('#hud-diameter'),
+  fpsCounter: $('#fps-counter'),
+  jumpCount: $('#modal-jump-count'),
+  backendDot: $('#backend-dot'),
+  backendText: $('#backend-text'),
+  modalBackendStatus: $('#modal-backend-status'),
+  triviaBox: $('#trivia-box'),
+  favList: $('#favorites-list')
+};
+
+let apiBase = '';
+/* FAST BACKEND SYNC (SUPPORTS LOCAL PORT 3000 & LIVE SERVER PORT 5500) */
 async function initBackend(){
   try{
-    const res = await fetch('/api/health');
+    apiBase = '';
+    if(location.port && location.port !== '3000'){
+      try {
+        const ping = await fetch('http://localhost:3000/api/health', { signal: AbortSignal.timeout(800) });
+        if(ping.ok) apiBase = 'http://localhost:3000';
+      } catch(e){}
+    }
+    const res = await fetch(`${apiBase}/api/health`);
     if(res.ok){
       backendLive = true;
-      $('#backend-dot').classList.remove('offline');
-      $('#backend-text').textContent = 'LIVE';
-      $('#modal-backend-status').textContent = 'Connected (In-Memory Engine)';
+      if(dom.backendDot) dom.backendDot.classList.remove('offline');
+      if(dom.backendText) dom.backendText.textContent = 'LIVE';
+      if(dom.modalBackendStatus) dom.modalBackendStatus.textContent = 'Connected (In-Memory Engine)';
       
-      const pRes = await fetch('/api/planets');
+      const pRes = await fetch(`${apiBase}/api/planets`);
       if(pRes.ok){
         const pData = await pRes.json();
         if(pData.planets && pData.planets.length){
@@ -751,17 +923,21 @@ async function initBackend(){
             if(states[p.id]){
               states[p.id].facts = p.facts;
               states[p.id].description = p.description;
+              states[p.id].tagline = p.tagline;
+              states[p.id].type = p.type;
+              states[p.id].telemetry = p.telemetry;
+              if(p.image) states[p.id].image = p.image;
             }
           });
           render();
         }
       }
 
-      fetch('/api/trivia').then(r => r.json()).then(tData => {
-        if(tData.trivia) $('#trivia-box').textContent = `“${tData.trivia}”`;
+      fetch(`${apiBase}/api/trivia`).then(r => r.json()).then(tData => {
+        if(tData.trivia && dom.triviaBox) dom.triviaBox.textContent = `“${tData.trivia}”`;
       }).catch(() => {});
 
-      fetch('/api/favorites').then(r => r.json()).then(fData => {
+      fetch(`${apiBase}/api/favorites`).then(r => r.json()).then(fData => {
         if(fData.favorites){
           userFavorites = new Set(fData.favorites.map(f => f.id));
           updateFavoritesUI();
@@ -772,10 +948,10 @@ async function initBackend(){
     }
   } catch(e){
     backendLive = false;
-    $('#backend-dot').classList.add('offline');
-    $('#backend-text').textContent = 'STANDALONE';
-    $('#modal-backend-status').textContent = 'Local Standalone Mode';
-    $('#trivia-box').textContent = '“Space is for everybody. It’s not just for a few people in science or math.” — Christa McAuliffe';
+    if(dom.backendDot) dom.backendDot.classList.add('offline');
+    if(dom.backendText) dom.backendText.textContent = 'STANDALONE';
+    if(dom.modalBackendStatus) dom.modalBackendStatus.textContent = 'Local Standalone Mode';
+    if(dom.triviaBox) dom.triviaBox.textContent = '“Space is for everybody. It’s not just for a few people in science or math.” — Christa McAuliffe';
   }
 }
 
@@ -784,7 +960,8 @@ function updateFavoritesUI(){
   bookmarkBtn.classList.toggle('saved', isFav);
   bookmarkText.textContent = isFav ? 'Bookmarked' : 'Bookmark World';
 
-  const favList = $('#favorites-list');
+  const favList = dom.favList;
+  if(!favList) return;
   if(userFavorites.size === 0){
     favList.textContent = 'No bookmarks saved yet.';
   } else {
@@ -807,9 +984,9 @@ bookmarkBtn.addEventListener('click', async () => {
   if(backendLive){
     try {
       if(isFav){
-        await fetch(`/api/favorites/${current}`, { method: 'DELETE' });
+        await fetch(`${apiBase}/api/favorites/${current}`, { method: 'DELETE' });
       } else {
-        await fetch('/api/favorites', {
+        await fetch(`${apiBase}/api/favorites`, {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({ planetId: current })
@@ -819,15 +996,56 @@ bookmarkBtn.addEventListener('click', async () => {
   }
 });
 
+/* HOLOGRAPHIC TELEMETRY HUD DATA & LOGIC */
+const planetTelemetry = {
+  mercury: { vel: '47.4 km/s', velPct: 95, scale: '0.38×', scalePct: 32, dist: '0.39 AU', moons: '0 Moons', gravity: '3.70 m/s²', diameter: '4,879 km' },
+  venus:   { vel: '35.0 km/s', velPct: 70, scale: '0.95×', scalePct: 80, dist: '0.72 AU', moons: '0 Moons', gravity: '8.87 m/s²', diameter: '12,104 km' },
+  earth:   { vel: '29.8 km/s', velPct: 60, scale: '1.00×', scalePct: 83, dist: '1.00 AU', moons: '1 (Luna)', gravity: '9.81 m/s²', diameter: '12,742 km' },
+  mars:    { vel: '24.1 km/s', velPct: 48, scale: '0.53×', scalePct: 44, dist: '1.52 AU', moons: '2 Active', gravity: '3.72 m/s²', diameter: '6,779 km' },
+  jupiter: { vel: '13.1 km/s', velPct: 26, scale: '11.21×', scalePct: 93, dist: '5.20 AU', moons: '95 Moons', gravity: '24.79 m/s²', diameter: '139,820 km' },
+  saturn:  { vel: '9.7 km/s',  velPct: 19, scale: '9.45×', scalePct: 79, dist: '9.58 AU', moons: '146 Moons', gravity: '10.44 m/s²', diameter: '116,460 km' },
+  uranus:  { vel: '6.8 km/s',  velPct: 14, scale: '4.01×', scalePct: 33, dist: '19.2 AU', moons: '28 Moons', gravity: '8.69 m/s²', diameter: '50,724 km' },
+  neptune: { vel: '5.4 km/s',  velPct: 11, scale: '3.88×', scalePct: 32, dist: '30.1 AU', moons: '16 Moons', gravity: '11.15 m/s²', diameter: '49,244 km' }
+};
+
+function updateHUD(){
+  const s = states[current];
+  const t = planetTelemetry[current];
+  if(!t) return;
+  if(dom.hudVelocity) dom.hudVelocity.textContent = t.vel;
+  if(dom.hudVelocityBar) dom.hudVelocityBar.style.width = `${t.velPct}%`;
+  if(dom.hudScale) dom.hudScale.textContent = t.scale;
+  if(dom.hudScaleBar) dom.hudScaleBar.style.width = `${t.scalePct}%`;
+  if(dom.hudDistance) dom.hudDistance.textContent = t.dist;
+  if(dom.hudMoons) dom.hudMoons.textContent = t.moons;
+  if(dom.hudGravity) dom.hudGravity.textContent = (s && s.telemetry && s.telemetry.gravity) ? s.telemetry.gravity : (t.gravity || 'N/A');
+  if(dom.hudDiameter) dom.hudDiameter.textContent = (s && s.telemetry && s.telemetry.diameter) ? s.telemetry.diameter : (t.diameter || 'N/A');
+}
+
+const hudToggleBtn = $('#hud-toggle-btn');
+const telemetryHud = $('#telemetry-hud');
+if(hudToggleBtn && telemetryHud){
+  hudToggleBtn.addEventListener('click', () => {
+    telemetryHud.classList.toggle('collapsed');
+    hudToggleBtn.classList.toggle('saved', !telemetryHud.classList.contains('collapsed'));
+  });
+}
+
 /* RENDER STATE */
 function render(){
   const s = states[current];
   if(!s) return;
+  const nextKey = s.next.toLowerCase();
+  const nextState = states[nextKey] || {};
+
   exp.dataset.planet = current;
-  $('#planet-title').textContent = s.name.toUpperCase();
-  $('#next-name').textContent = s.next;
-  $('#next-number').textContent = s.number;
-  $('#planet-badge').textContent = s.badge || `SOLAR SYSTEM // ${s.number}`;
+  if(dom.planetTitle) dom.planetTitle.textContent = s.name.toUpperCase();
+  if(dom.planetTagline) dom.planetTagline.textContent = s.tagline ? s.tagline.toUpperCase() : '';
+  if(dom.planetType) dom.planetType.textContent = s.type ? s.type.toUpperCase() : 'PLANET';
+  if(dom.planetDescription) dom.planetDescription.textContent = s.description || '';
+  if(dom.nextName) dom.nextName.textContent = s.next;
+  if(dom.nextNumber) dom.nextNumber.textContent = nextState.number || s.number;
+  if(dom.planetBadge) dom.planetBadge.textContent = s.badge || `SOLAR SYSTEM // ${s.number}`;
   portal.setAttribute('aria-label', 'Travel to ' + s.next);
   
   facts.innerHTML = s.facts.map(f => `<div class="fact"><dt>${f[0]}</dt><dd>${f[1]}</dd></div>`).join('');
@@ -853,24 +1071,30 @@ function render(){
   document.querySelectorAll('.background').forEach(v => {
     const on = v.id === s.background;
     v.classList.toggle('is-visible', on);
-    if(on) v.play().catch(() => {});
+    if(on && typeof v.play === 'function') {
+      v.play().catch(() => {});
+    } else if(!on && typeof v.pause === 'function') {
+      v.pause();
+    }
   });
 
-  if(s.image){
-    pImage.style.display = '';
+  // Authentic Next Destination Preview in Portal
+  const nextImgUrl = `assets/planets/${nextKey}.jpg`;
+  if(pImage){
+    pImage.src = nextImgUrl;
+    pImage.style.display = 'block';
+  }
+  if(pVideo){
     pVideo.style.display = 'none';
     pVideo.pause();
-  } else {
-    pImage.style.display = 'none';
-    pVideo.style.display = '';
-    if(pVideo.getAttribute('src') !== s.portal){
-      pVideo.src = s.portal;
-      pVideo.load();
-    }
-    pVideo.play().catch(() => {});
+  }
+
+  if(CANVAS_BG_PLANETS.has(current)){
+    renderBackgroundForPlanet(current);
   }
 
   updateFavoritesUI();
+  updateHUD();
 }
 
 /* HIGH-SPEED CANVAS RESIZING */
@@ -954,8 +1178,15 @@ function drawPlanetSphere(c, planetId, cx, cy, radius, time){
   c.arc(cx, cy, radius, 0, Math.PI * 2);
   c.clip();
 
-  // Planet specific surface textures
-  if(id === 'jupiter'){
+  const realImg = planetImageMap[id];
+  if(realImg && realImg.complete && realImg.naturalWidth > 0){
+    c.save();
+    c.translate(cx, cy);
+    const tilts = { mercury: 0.03, venus: 0.1, earth: 0.41, mars: 0.44, jupiter: 0.05, saturn: -0.35, uranus: 1.71, neptune: 0.5 };
+    c.rotate(tilts[id] || 0.1);
+    c.drawImage(realImg, -radius, -radius, radius * 2, radius * 2);
+    c.restore();
+  } else if(id === 'jupiter'){
     const grad = c.createLinearGradient(cx, cy - radius, cx, cy + radius);
     grad.addColorStop(0, '#c38753');
     grad.addColorStop(0.12, '#eed8bc');
@@ -1136,250 +1367,152 @@ function drawPlanetSphere(c, planetId, cx, cy, radius, time){
   c.fill();
 }
 
-/* PROCEDURAL PLANET BACKGROUND RENDERER */
-function renderBackgroundPlanet(cEl, planetId){
-  if(!cEl) return;
-  const c = cEl.getContext('2d');
-  const w = cEl.width, h = cEl.height;
-  c.clearRect(0, 0, w, h);
-
-  const bgGrad = c.createRadialGradient(w * 0.75, h * 0.5, 50, w * 0.5, h * 0.5, Math.max(w, h));
-
-  if(planetId === 'jupiter'){
-    bgGrad.addColorStop(0, '#2d180b');
-    bgGrad.addColorStop(0.5, '#120904');
-    bgGrad.addColorStop(1, '#050201');
-    c.fillStyle = bgGrad;
-    c.fillRect(0, 0, w, h);
-
-    const pcx = w * 0.88, pcy = h * 0.65, pr = Math.min(w, h) * 0.75;
+/* AUTHENTIC CELESTIAL BODY RENDERER (REAL NASA PHOTOGRAPHY WITH SHADING & FALLBACK) */
+function drawCelestialBody(c, planetId, pcx, pcy, pr, fallbackFn){
+  const realImg = planetImageMap[planetId];
+  if(realImg && realImg.complete && realImg.naturalWidth > 0){
     c.save();
     c.beginPath();
     c.arc(pcx, pcy, pr, 0, Math.PI * 2);
     c.clip();
+    const tilts = { mercury: 0.03, venus: 0.1, earth: 0.41, mars: 0.44, jupiter: 0.05, saturn: -0.35, uranus: 1.71, neptune: 0.5 };
+    c.translate(pcx, pcy);
+    c.rotate(tilts[planetId] || 0.1);
+    c.drawImage(realImg, -pr, -pr, pr * 2, pr * 2);
+    c.restore();
 
-    const jGrad = c.createLinearGradient(pcx, pcy - pr, pcx, pcy + pr);
-    jGrad.addColorStop(0, '#c38753');
-    jGrad.addColorStop(0.15, '#eecfa7');
-    jGrad.addColorStop(0.3, '#945127');
-    jGrad.addColorStop(0.45, '#e2c59d');
-    jGrad.addColorStop(0.6, '#864319');
-    jGrad.addColorStop(0.75, '#edd2b0');
-    jGrad.addColorStop(0.9, '#a25e2e');
-    jGrad.addColorStop(1, '#7a3e1a');
-    c.fillStyle = jGrad;
-    c.fillRect(pcx - pr, pcy - pr, pr * 2, pr * 2);
-
-    c.fillStyle = '#b73822';
+    // Natural terminator shadow
+    c.save();
     c.beginPath();
-    c.ellipse(pcx - pr * 0.35, pcy + pr * 0.2, pr * 0.24, pr * 0.14, -0.08, 0, Math.PI * 2);
-    c.fill();
-
-    const shadow = c.createRadialGradient(pcx - pr * 0.4, pcy - pr * 0.4, pr * 0.2, pcx, pcy, pr);
-    shadow.addColorStop(0, 'rgba(255,255,255,0.08)');
-    shadow.addColorStop(0.5, 'rgba(0,0,0,0.1)');
-    shadow.addColorStop(1, 'rgba(0,0,0,0.92)');
+    c.arc(pcx, pcy, pr, 0, Math.PI * 2);
+    c.clip();
+    const shadow = c.createRadialGradient(
+      pcx - pr * 0.4, pcy - pr * 0.4, pr * 0.25,
+      pcx, pcy, pr * 1.05
+    );
+    shadow.addColorStop(0, 'rgba(255,255,255,0.18)');
+    shadow.addColorStop(0.35, 'rgba(0,0,0,0)');
+    shadow.addColorStop(0.7, 'rgba(0,0,0,0.4)');
+    shadow.addColorStop(1, 'rgba(0,0,0,0.85)');
     c.fillStyle = shadow;
     c.fillRect(pcx - pr, pcy - pr, pr * 2, pr * 2);
     c.restore();
+  } else if (typeof fallbackFn === 'function') {
+    fallbackFn();
+  }
+}
 
-    const limb = c.createRadialGradient(pcx, pcy, pr * 0.96, pcx, pcy, pr * 1.08);
-    limb.addColorStop(0, 'rgba(255, 185, 120, 0.55)');
-    limb.addColorStop(1, 'rgba(0,0,0,0)');
-    c.fillStyle = limb;
-    c.beginPath();
-    c.arc(pcx, pcy, pr * 1.08, 0, Math.PI * 2);
-    c.fill();
+/* AUTHENTIC CELESTIAL VISTA BACKGROUND RENDERER */
+function renderBackgroundPlanet(cEl, planetId){
+  if(!cEl || typeof cEl.getContext !== 'function') return;
+  const c = cEl.getContext('2d');
+  if(!c) return;
+  const w = cEl.width, h = cEl.height;
+  c.clearRect(0, 0, w, h);
 
-  } else if(planetId === 'saturn'){
-    bgGrad.addColorStop(0, '#231d10');
-    bgGrad.addColorStop(0.6, '#0d0a05');
-    bgGrad.addColorStop(1, '#030201');
-    c.fillStyle = bgGrad;
-    c.fillRect(0, 0, w, h);
+  const bgGradients = {
+    jupiter: ['#2d180b', '#120904', '#050201'],
+    saturn:  ['#231d10', '#0d0a05', '#030201'],
+    uranus:  ['#0d282e', '#041114', '#010507'],
+    neptune: ['#091642', '#03081a', '#01030d'],
+    mercury: ['#2b2620', '#0f0c0a', '#050403'],
+    mars:    ['#38160d', '#190804', '#050201'],
+    earth:   ['#0b1d3a', '#040d1a', '#010308'],
+    venus:   ['#2d2210', '#120d04', '#050301']
+  };
 
-    const pcx = w * 0.78, pcy = h * 0.55, pr = Math.min(w, h) * 0.48;
+  const bgCols = bgGradients[planetId] || ['#1a1528', '#0b0814', '#030206'];
+  const bgGrad = c.createRadialGradient(w * 0.75, h * 0.5, 50, w * 0.5, h * 0.5, Math.max(w, h));
+  bgGrad.addColorStop(0, bgCols[0]);
+  bgGrad.addColorStop(0.5, bgCols[1]);
+  bgGrad.addColorStop(1, bgCols[2]);
+  c.fillStyle = bgGrad;
+  c.fillRect(0, 0, w, h);
 
+  const params = {
+    jupiter: { pcx: w * 0.72, pcy: h * 0.48, pr: Math.min(w, h) * 0.46, limbCol: 'rgba(255, 185, 120, 0.55)' },
+    saturn:  { pcx: w * 0.72, pcy: h * 0.48, pr: Math.min(w, h) * 0.42, limbCol: 'rgba(250, 220, 160, 0.45)' },
+    uranus:  { pcx: w * 0.72, pcy: h * 0.48, pr: Math.min(w, h) * 0.45, limbCol: 'rgba(110, 235, 245, 0.55)' },
+    neptune: { pcx: w * 0.72, pcy: h * 0.48, pr: Math.min(w, h) * 0.45, limbCol: 'rgba(70, 140, 255, 0.6)' },
+    mercury: { pcx: w * 0.72, pcy: h * 0.48, pr: Math.min(w, h) * 0.44, limbCol: 'rgba(220, 210, 200, 0.4)' },
+    mars:    { pcx: w * 0.72, pcy: h * 0.48, pr: Math.min(w, h) * 0.45, limbCol: 'rgba(255, 120, 75, 0.55)' },
+    earth:   { pcx: w * 0.72, pcy: h * 0.48, pr: Math.min(w, h) * 0.45, limbCol: 'rgba(75, 160, 255, 0.65)' },
+    venus:   { pcx: w * 0.72, pcy: h * 0.48, pr: Math.min(w, h) * 0.45, limbCol: 'rgba(255, 220, 140, 0.55)' }
+  };
+
+  const p = params[planetId] || { pcx: w * 0.8, pcy: h * 0.6, pr: Math.min(w, h) * 0.6, limbCol: 'rgba(255,255,255,0.4)' };
+  const { pcx, pcy, pr, limbCol } = p;
+
+  if (planetId === 'saturn') {
     c.save();
     c.translate(pcx, pcy);
-    c.rotate(-0.38);
+    c.rotate(-0.35);
     c.beginPath();
     c.rect(-pr * 4, -pr * 3, pr * 8, pr * 3);
     c.clip();
     drawSaturnRings(c, pr);
     c.restore();
+  }
 
+  drawCelestialBody(c, planetId, pcx, pcy, pr, () => {
     c.save();
     c.beginPath();
     c.arc(pcx, pcy, pr, 0, Math.PI * 2);
     c.clip();
-    const sGrad = c.createLinearGradient(pcx, pcy - pr, pcx, pcy + pr);
-    sGrad.addColorStop(0, '#d1ab65');
-    sGrad.addColorStop(0.25, '#fae6b8');
-    sGrad.addColorStop(0.5, '#caa158');
-    sGrad.addColorStop(0.75, '#f4dca6');
-    sGrad.addColorStop(1, '#b78b45');
-    c.fillStyle = sGrad;
-    c.fillRect(pcx - pr, pcy - pr, pr * 2, pr * 2);
-
-    const shadow = c.createRadialGradient(pcx - pr * 0.35, pcy - pr * 0.35, pr * 0.2, pcx, pcy, pr);
-    shadow.addColorStop(0, 'rgba(255,255,255,0.08)');
-    shadow.addColorStop(0.5, 'rgba(0,0,0,0.1)');
-    shadow.addColorStop(1, 'rgba(0,0,0,0.92)');
-    c.fillStyle = shadow;
+    const grad = c.createRadialGradient(pcx - pr * 0.3, pcy - pr * 0.3, pr * 0.1, pcx, pcy, pr);
+    const cols = states[planetId]?.color || '#888';
+    grad.addColorStop(0, cols);
+    grad.addColorStop(1, '#050505');
+    c.fillStyle = grad;
     c.fillRect(pcx - pr, pcy - pr, pr * 2, pr * 2);
     c.restore();
+  });
 
+  if (planetId === 'saturn') {
     c.save();
     c.translate(pcx, pcy);
-    c.rotate(-0.38);
+    c.rotate(-0.35);
     c.beginPath();
     c.rect(-pr * 4, 0, pr * 8, pr * 3);
     c.clip();
     drawSaturnRings(c, pr);
     c.restore();
+  }
 
-    const limb = c.createRadialGradient(pcx, pcy, pr * 0.96, pcx, pcy, pr * 1.08);
-    limb.addColorStop(0, 'rgba(250, 220, 160, 0.45)');
-    limb.addColorStop(1, 'rgba(0,0,0,0)');
-    c.fillStyle = limb;
-    c.beginPath();
-    c.arc(pcx, pcy, pr * 1.08, 0, Math.PI * 2);
-    c.fill();
+  // Atmospheric limb glow
+  const limb = c.createRadialGradient(pcx, pcy, pr * 0.96, pcx, pcy, pr * 1.1);
+  limb.addColorStop(0, limbCol);
+  limb.addColorStop(1, 'rgba(0,0,0,0)');
+  c.fillStyle = limb;
+  c.beginPath();
+  c.arc(pcx, pcy, pr * 1.1, 0, Math.PI * 2);
+  c.fill();
+}
 
-  } else if(planetId === 'uranus'){
-    bgGrad.addColorStop(0, '#0d282e');
-    bgGrad.addColorStop(0.6, '#041114');
-    bgGrad.addColorStop(1, '#010507');
-    c.fillStyle = bgGrad;
-    c.fillRect(0, 0, w, h);
-
-    const pcx = w * 0.82, pcy = h * 0.6, pr = Math.min(w, h) * 0.65;
-    c.save();
-    c.beginPath();
-    c.arc(pcx, pcy, pr, 0, Math.PI * 2);
-    c.clip();
-    const uGrad = c.createLinearGradient(pcx - pr, pcy - pr, pcx + pr, pcy + pr);
-    uGrad.addColorStop(0, '#7ce3e9');
-    uGrad.addColorStop(0.5, '#4bbbc4');
-    uGrad.addColorStop(1, '#1b6d75');
-    c.fillStyle = uGrad;
-    c.fillRect(pcx - pr, pcy - pr, pr * 2, pr * 2);
-
-    const shadow = c.createRadialGradient(pcx - pr * 0.35, pcy - pr * 0.35, pr * 0.2, pcx, pcy, pr);
-    shadow.addColorStop(0, 'rgba(255,255,255,0.08)');
-    shadow.addColorStop(0.5, 'rgba(0,0,0,0.1)');
-    shadow.addColorStop(1, 'rgba(0,0,0,0.94)');
-    c.fillStyle = shadow;
-    c.fillRect(pcx - pr, pcy - pr, pr * 2, pr * 2);
-    c.restore();
-
-    const limb = c.createRadialGradient(pcx, pcy, pr * 0.96, pcx, pcy, pr * 1.1);
-    limb.addColorStop(0, 'rgba(110, 235, 245, 0.55)');
-    limb.addColorStop(1, 'rgba(0,0,0,0)');
-    c.fillStyle = limb;
-    c.beginPath();
-    c.arc(pcx, pcy, pr * 1.1, 0, Math.PI * 2);
-    c.fill();
-
-  } else if(planetId === 'neptune'){
-    bgGrad.addColorStop(0, '#091642');
-    bgGrad.addColorStop(0.6, '#03081a');
-    bgGrad.addColorStop(1, '#01030d');
-    c.fillStyle = bgGrad;
-    c.fillRect(0, 0, w, h);
-
-    const pcx = w * 0.85, pcy = h * 0.62, pr = Math.min(w, h) * 0.68;
-    c.save();
-    c.beginPath();
-    c.arc(pcx, pcy, pr, 0, Math.PI * 2);
-    c.clip();
-    const nGrad = c.createLinearGradient(pcx - pr, pcy - pr, pcx + pr, pcy + pr);
-    nGrad.addColorStop(0, '#4b78fa');
-    nGrad.addColorStop(0.5, '#2044d4');
-    nGrad.addColorStop(1, '#0c2282');
-    c.fillStyle = nGrad;
-    c.fillRect(pcx - pr, pcy - pr, pr * 2, pr * 2);
-
-    c.fillStyle = 'rgba(255, 255, 255, 0.4)';
-    c.beginPath();
-    c.ellipse(pcx - pr * 0.3, pcy - pr * 0.2, pr * 0.45, 4, 0.1, 0, Math.PI * 2);
-    c.ellipse(pcx - pr * 0.1, pcy + pr * 0.25, pr * 0.5, 5, -0.05, 0, Math.PI * 2);
-    c.fill();
-
-    const shadow = c.createRadialGradient(pcx - pr * 0.35, pcy - pr * 0.35, pr * 0.2, pcx, pcy, pr);
-    shadow.addColorStop(0, 'rgba(255,255,255,0.08)');
-    shadow.addColorStop(0.5, 'rgba(0,0,0,0.1)');
-    shadow.addColorStop(1, 'rgba(0,0,0,0.94)');
-    c.fillStyle = shadow;
-    c.fillRect(pcx - pr, pcy - pr, pr * 2, pr * 2);
-    c.restore();
-
-    const limb = c.createRadialGradient(pcx, pcy, pr * 0.96, pcx, pcy, pr * 1.1);
-    limb.addColorStop(0, 'rgba(70, 140, 255, 0.6)');
-    limb.addColorStop(1, 'rgba(0,0,0,0)');
-    c.fillStyle = limb;
-    c.beginPath();
-    c.arc(pcx, pcy, pr * 1.1, 0, Math.PI * 2);
-    c.fill();
-
-  } else if(planetId === 'mercury'){
-    bgGrad.addColorStop(0, '#2b2620');
-    bgGrad.addColorStop(0.6, '#0f0c0a');
-    bgGrad.addColorStop(1, '#050403');
-    c.fillStyle = bgGrad;
-    c.fillRect(0, 0, w, h);
-
-    const pcx = w * 0.85, pcy = h * 0.65, pr = Math.min(w, h) * 0.7;
-    c.save();
-    c.beginPath();
-    c.arc(pcx, pcy, pr, 0, Math.PI * 2);
-    c.clip();
-    const mGrad = c.createRadialGradient(pcx - pr * 0.3, pcy - pr * 0.3, pr * 0.1, pcx, pcy, pr);
-    mGrad.addColorStop(0, '#b8b4ad');
-    mGrad.addColorStop(0.6, '#7d7973');
-    mGrad.addColorStop(1, '#2c2925');
-    c.fillStyle = mGrad;
-    c.fillRect(pcx - pr, pcy - pr, pr * 2, pr * 2);
-
-    c.fillStyle = 'rgba(30, 28, 25, 0.4)';
-    c.strokeStyle = 'rgba(230, 225, 220, 0.3)';
-    c.lineWidth = 2;
-    [[-0.35, -0.2, 0.15], [-0.15, -0.4, 0.2], [-0.2, 0.1, 0.18], [-0.4, 0.3, 0.22]].forEach(([kx, ky, kr]) => {
-      c.beginPath();
-      c.arc(pcx + kx * pr, pcy + ky * pr, kr * pr, 0, Math.PI * 2);
-      c.fill();
-      c.stroke();
-    });
-
-    const shadow = c.createRadialGradient(pcx - pr * 0.35, pcy - pr * 0.35, pr * 0.2, pcx, pcy, pr);
-    shadow.addColorStop(0, 'rgba(255,255,255,0.08)');
-    shadow.addColorStop(0.5, 'rgba(0,0,0,0.1)');
-    shadow.addColorStop(1, 'rgba(0,0,0,0.95)');
-    c.fillStyle = shadow;
-    c.fillRect(pcx - pr, pcy - pr, pr * 2, pr * 2);
-    c.restore();
-
-    const limb = c.createRadialGradient(pcx, pcy, pr * 0.97, pcx, pcy, pr * 1.08);
-    limb.addColorStop(0, 'rgba(220, 210, 200, 0.4)');
-    limb.addColorStop(1, 'rgba(0,0,0,0)');
-    c.fillStyle = limb;
-    c.beginPath();
-    c.arc(pcx, pcy, pr * 1.08, 0, Math.PI * 2);
-    c.fill();
+const CANVAS_BG_PLANETS = new Set(['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune']);
+const renderedBgs = new Set();
+function renderBackgroundForPlanet(planetId, force = false){
+  if(!planetId) return;
+  const id = planetId.toLowerCase();
+  if(!CANVAS_BG_PLANETS.has(id)) return;
+  const el = document.getElementById(`${id}-background`);
+  if(!el || typeof el.getContext !== 'function') return;
+  if(el.width !== innerWidth || el.height !== innerHeight){
+    el.width = innerWidth;
+    el.height = innerHeight;
+    renderedBgs.delete(id);
+  }
+  if(force || !renderedBgs.has(id)){
+    renderBackgroundPlanet(el, id);
+    renderedBgs.add(id);
   }
 }
 
 function renderAllBackgrounds(){
-  const bgPlanets = ['mercury', 'jupiter', 'saturn', 'uranus', 'neptune'];
-  bgPlanets.forEach(id => {
-    const el = document.getElementById(`${id}-background`);
-    if(el){
-      el.width = innerWidth;
-      el.height = innerHeight;
-      renderBackgroundPlanet(el, id);
-    }
-  });
+  renderedBgs.clear();
+  if(CANVAS_BG_PLANETS.has(current.toLowerCase())){
+    renderBackgroundForPlanet(current, true);
+  }
 }
 
 /* ZERO-ALLOCATION 3D CANVAS LOOP */
@@ -1393,8 +1526,7 @@ function draw(now){
   frameCount++;
   if(now - fpsTimer >= 1000){
     const fpsVal = Math.round((frameCount * 1000) / (now - fpsTimer));
-    const fpsEl = $('#fps-counter');
-    if(fpsEl) fpsEl.textContent = `${fpsVal} FPS`;
+    if(dom.fpsCounter) dom.fpsCounter.textContent = `${fpsVal} FPS`;
     frameCount = 0;
     fpsTimer = now;
   }
@@ -1407,10 +1539,6 @@ function draw(now){
   
   drawStars(now);
   ctx.clearRect(0, 0, innerWidth, innerHeight);
-  if(frozen){
-    ctx.drawImage(scene, 0, 0, innerWidth, innerHeight);
-    drawShade(ctx);
-  }
   
   const rect = portal.getBoundingClientRect(), e = expansion;
   const rcx = rect.left + rect.width * 0.5, rcy = rect.top + rect.height * 0.5;
@@ -1453,15 +1581,13 @@ function draw(now){
     ctx.fillRect(0, 0, innerWidth, innerHeight);
 
     if (transitionActive) {
-      if (tVideo && tVideo.src && !tVideo.paused) {
-        drawCover(ctx, tVideo);
-        drawShade(ctx);
-      } else {
-        const targetPlanet = current.toLowerCase();
-        const pRadius = Math.min(bw, bh) * 0.42 * (expansion ? (1 + expansion * 2.2) : 1);
-        drawPlanetSphere(ctx, targetPlanet, cx, cy, pRadius, now);
-      }
+      // Hyperspace warp jump: destination planet sphere grows as we approach
+      const dest = (jumpTargetPlanet || current).toLowerCase();
+      const pRadius = Math.min(bw, bh) * 0.42 * (1 + expansion * 2.2);
+      drawPlanetSphere(ctx, dest, cx, cy, pRadius, now);
+      drawShade(ctx);
     } else {
+      // In orbit: portal window reveals next destination planet
       const nextTarget = states[current].next.toLowerCase();
       const pRadius = Math.min(bw, bh) * 0.38;
       drawPlanetSphere(ctx, nextTarget, cx, cy, pRadius, now);
@@ -1482,46 +1608,41 @@ function revealPlanetContent(){
   retrigger(exp, 'content-revealing');
 }
 
-/* JUMP LOGIC WITH UNFREEZE FIX */
+let jumpTargetPlanet = null;
+/* JUMP LOGIC WITH PROCEDURAL WARP ENGINE */
 async function jumpToPlanet(targetPlanet){
   if(busy || !states[targetPlanet]) return;
   busy = true;
   tX = tY = 0;
+  jumpTargetPlanet = targetPlanet;
 
   try {
     jumpCounter++;
-    $('#modal-jump-count').textContent = `${jumpCounter} Jumps`;
+    if(dom.jumpCount) dom.jumpCount.textContent = `${jumpCounter} Jumps`;
     if(backendLive){
-      fetch('/api/telemetry/visit', {
+      fetch(`${apiBase}/api/telemetry/visit`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ planetId: targetPlanet })
       }).catch(() => {});
     }
 
-    tVideo.src = states[current].portal || TO_EARTH;
-    tVideo.load();
-    exp.classList.add('is-loading');
+    // Pre-render destination canvas vista so it is ready
+    renderBackgroundForPlanet(targetPlanet, true);
 
-    await Promise.race([once(tVideo, 'canplaythrough'), once(tVideo, 'error'), wait(1200)]);
     exp.classList.remove('is-loading', 'content-revealing', 'mask-revealing');
     exp.classList.add('is-transitioning');
     playWarpSfx();
     
-    tVideo.currentTime = 0;
-    tVideo.playbackRate = 1.35;
     canvasOpacity = 1;
     transitionActive = true;
     
-    await tVideo.play().catch(() => {});
-    await animateValue(v => expansion = v, 950);
-    if(!tVideo.ended) await Promise.race([once(tVideo, 'ended'), wait(1500)]);
+    // Hyper-speed warp jump expansion: portal expands towards viewer
+    await animateValue(v => expansion = v, 850);
 
-    sctx.clearRect(0, 0, innerWidth, innerHeight);
-    drawCover(sctx, tVideo);
-    frozen = true;
-
+    // Commit to target planet
     current = targetPlanet;
+    window.current = current;
     exp.classList.add('is-committing');
     render();
 
@@ -1532,24 +1653,21 @@ async function jumpToPlanet(targetPlanet){
     maskScale = 0;
     canvasOpacity = 1;
     exp.classList.remove('is-transitioning', 'is-committing');
+    jumpTargetPlanet = null;
 
     const mr = revealMask();
     await wait(80);
     revealPlanetContent();
     await mr;
 
-    await wait(300);
-    tVideo.removeAttribute('src');
-    tVideo.load();
-    frozen = false; // Unfreeze scene so background videos animate cleanly
     busy = false;
   } catch(err) {
     transitionActive = false;
     expansion = 0;
     maskScale = 1;
     canvasOpacity = 1;
-    frozen = false;
     exp.classList.remove('is-transitioning', 'is-committing', 'is-loading');
+    jumpTargetPlanet = null;
     busy = false;
   }
 }
@@ -1658,70 +1776,91 @@ document.addEventListener('mouseleave', () => cursor.classList.remove('is-visibl
 portal.addEventListener('pointerenter', () => cursor.classList.add('is-enter'));
 portal.addEventListener('pointerleave', () => cursor.classList.remove('is-enter'));
 
+let lastPx = -999, lastPy = -999, lastOx = -999, lastOy = -999;
 function cursorLoop(){
   if(!document.hidden){
     ox += (px - ox) * .22;
     oy += (py - oy) * .22;
-    cursor.style.transform = `translate3d(${px}px,${py}px,0)`;
-    const t = `${ox - px}px ${oy - py}px`;
-    orbit.style.translate = t;
-    label.style.translate = t;
+    if(Math.abs(px - lastPx) > 0.1 || Math.abs(py - lastPy) > 0.1 || Math.abs(ox - lastOx) > 0.1 || Math.abs(oy - lastOy) > 0.1){
+      cursor.style.transform = `translate3d(${px}px,${py}px,0)`;
+      const t = `${ox - px}px ${oy - py}px`;
+      orbit.style.translate = t;
+      label.style.translate = t;
+      lastPx = px; lastPy = py;
+      lastOx = ox; lastOy = oy;
+    }
   }
   requestAnimationFrame(cursorLoop);
 }
 
-/* HIGH-SPEED PRELOADER WITH SKIP */
+/* HIGH-SPEED BULLETPROOF PRELOADER WITH SKIP */
 let preloaderFinished = false;
+let progressInterval = null;
+
 const finishPreloader = () => {
   if(preloaderFinished) return;
   preloaderFinished = true;
+  if(progressInterval) clearInterval(progressInterval);
   
   const val = $('#preloader-value'), count = $('#preloader-count');
   const logo = $('#floating-logo'), pre = $('#preloader');
   
-  val.textContent = '100';
-  count.classList.add('is-leaving');
-  logo.classList.add('is-docked');
-  pre.classList.add('is-background');
-  body.classList.add('preload-complete');
+  if(val) val.textContent = '100';
+  if(count) count.classList.add('is-leaving');
+  if(logo) logo.classList.add('is-docked');
+  if(pre) {
+    pre.classList.add('is-background');
+    pre.style.display = 'none';
+  }
+  body.classList.add('preload-complete', 'intro-ready');
   
+  render();
+  renderBackgroundForPlanet(current, true);
   startExperience();
   initBackend();
 
-  setTimeout(() => count.remove(), 750);
-  setTimeout(() => logo.classList.add('is-settled'), 1600);
+  setTimeout(() => { if(count) count.remove(); }, 750);
+  setTimeout(() => { if(logo) logo.classList.add('is-settled'); }, 1600);
 };
 
 $('#skip-preloader').addEventListener('click', finishPreloader);
 
 async function startExperience(){
-  await ready(states[current].image ? pImage : pVideo);
-  await revealMask();
-  body.classList.add('intro-ready');
-  await wait(650);
+  maskScale = 1;
+  revealMask();
   revealPlanetContent();
 }
 
 function runPreloader(){
   const v = $('#preloader-video'), val = $('#preloader-value');
 
-  const tick = () => {
-    if(preloaderFinished) return;
-    if(v.duration) val.textContent = Math.min(99, Math.round(v.currentTime / v.duration * 100));
-    requestAnimationFrame(tick);
-  };
+  let curProg = 0;
+  progressInterval = setInterval(() => {
+    if(preloaderFinished){
+      clearInterval(progressInterval);
+      return;
+    }
+    if(curProg < 96){
+      curProg += Math.floor(Math.random() * 8) + 5;
+      if(val) val.textContent = Math.min(96, curProg);
+    }
+  }, 70);
 
   const go = () => {
-    v.playbackRate = Math.max(.25, v.duration / 2.5);
-    v.play().then(() => requestAnimationFrame(tick)).catch(finishPreloader);
+    if(!v) return finishPreloader();
+    v.playbackRate = Math.max(.25, (v.duration || 2) / 2.2);
+    v.play().catch(() => {});
   };
 
-  v.addEventListener('ended', finishPreloader);
-  v.addEventListener('error', finishPreloader);
-  setTimeout(finishPreloader, 3200);
+  if(v){
+    v.addEventListener('ended', finishPreloader);
+    v.addEventListener('error', finishPreloader);
+    if(v.readyState >= 1) go();
+    else v.addEventListener('loadedmetadata', go, {once:true});
+  }
 
-  if(v.readyState >= 1) go();
-  else v.addEventListener('loadedmetadata', go, {once:true});
+  // Automatic transition guarantee: never hang for more than 2.2 seconds
+  setTimeout(finishPreloader, 2200);
 }
 
 /* MODALS */
@@ -1765,23 +1904,31 @@ $('#nav-explore').addEventListener('click', e => {
 $('#planets-close-btn').addEventListener('click', () => closeModal(planetsModal));
 planetsModal.addEventListener('click', e => { if(e.target === planetsModal) closeModal(planetsModal); });
 
+let catalogBuilt = false;
 function populatePlanetsCatalog(){
   const grid = $('#planets-catalog-grid');
-  grid.innerHTML = planets.map((p, idx) => {
-    const id = p.toLowerCase();
-    return `
-      <button class="planet-card-btn" data-id="${id}" type="button">
-        <strong>${p}</strong>
-        <span>[0${idx+1}]</span>
-      </button>
-    `;
-  }).join('');
+  if(!grid) return;
+  if(!catalogBuilt){
+    grid.innerHTML = planets.map((p, idx) => {
+      const id = p.toLowerCase();
+      return `
+        <button class="planet-card-btn" data-id="${id}" type="button">
+          <strong>${p}</strong>
+          <span>[0${idx+1}]</span>
+        </button>
+      `;
+    }).join('');
 
-  grid.querySelectorAll('.planet-card-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      closeModal(planetsModal);
-      jumpToPlanet(btn.dataset.id);
+    grid.querySelectorAll('.planet-card-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeModal(planetsModal);
+        jumpToPlanet(btn.dataset.id);
+      });
     });
+    catalogBuilt = true;
+  }
+  grid.querySelectorAll('.planet-card-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.id === current);
   });
 }
 
@@ -1789,12 +1936,28 @@ $('#floating-logo').addEventListener('click', () => openModal(aboutModal));
 $('#brand-anchor').addEventListener('click', e => { e.preventDefault(); openModal(aboutModal); });
 
 /* INITIALIZE */
-document.querySelectorAll('.background').forEach(v => { v.pause(); v.currentTime = 0; });
+window.jumpToPlanet = jumpToPlanet;
+window.travel = travel;
+window.current = current;
+window.states = states;
+document.querySelectorAll('.background').forEach(v => {
+  if (typeof v.pause === 'function') {
+    v.pause();
+    v.currentTime = 0;
+  }
+});
 resizeCanvas();
 render();
 requestAnimationFrame(draw);
 requestAnimationFrame(cursorLoop);
 runPreloader();
+
+/* PWA OFFLINE CAPABILITY REGISTRATION */
+if('serviceWorker' in navigator && (location.protocol === 'http:' || location.protocol === 'https:')){
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
 </script>
 </body>
 </html>

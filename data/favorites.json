@@ -11,6 +11,12 @@
       "name": "Mercury",
       "savedAt": "2026-10-10T08:19:36.065Z",
       "note": "Bookmarked during interplanetary orbit"
+    },
+    {
+      "id": "jupiter",
+      "name": "Jupiter",
+      "savedAt": "2026-10-11T08:21:38.702Z",
+      "note": "Bookmarked during interplanetary orbit"
     }
   ]
 }

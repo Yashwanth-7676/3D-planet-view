@@ -10,10 +10,22 @@
       "accentColor": "#b8b2aa",
       "gradient": "linear-gradient(135deg, #2b2826 0%, #0d0c0c 100%)",
       "facts": [
-        ["Distance:", "57.9 million km (0.39 AU) from the Sun."],
-        ["Year:", "88 Earth days per solar orbit."],
-        ["Temperature:", "Drastic swings: -180 °C at night to 430 °C by day."],
-        ["Atmosphere:", "Thin exosphere containing oxygen, sodium, and hydrogen."]
+        [
+          "Distance:",
+          "57.9 million km (0.39 AU) from the Sun."
+        ],
+        [
+          "Year:",
+          "88 Earth days per solar orbit."
+        ],
+        [
+          "Temperature:",
+          "Drastic swings: -180 °C at night to 430 °C by day."
+        ],
+        [
+          "Atmosphere:",
+          "Thin exosphere containing oxygen, sodium, and hydrogen."
+        ]
       ],
       "telemetry": {
         "gravity": "3.7 m/s²",
@@ -21,7 +33,8 @@
         "moons": 0,
         "orbitalSpeed": "47.4 km/s"
       },
-      "description": "Mercury is the smallest planet in the Solar System and the closest to the Sun. Its cratered surface resembles Earth's Moon."
+      "description": "Mercury is the smallest planet in the Solar System and the closest to the Sun. Its cratered surface resembles Earth's Moon.",
+      "image": "assets/planets/mercury.jpg"
     },
     {
       "id": "venus",
@@ -33,10 +46,22 @@
       "accentColor": "#f5cb87",
       "gradient": "linear-gradient(135deg, #422812 0%, #150a04 100%)",
       "facts": [
-        ["Distance:", "108.2 million km (0.72 AU) from the Sun."],
-        ["Year:", "225 Earth days."],
-        ["Temperature:", "Around 465 °C — hottest surface in our Solar System."],
-        ["Atmosphere:", "Extremely dense CO2 blanket with clouds of sulfuric acid."]
+        [
+          "Distance:",
+          "108.2 million km (0.72 AU) from the Sun."
+        ],
+        [
+          "Year:",
+          "225 Earth days."
+        ],
+        [
+          "Temperature:",
+          "Around 465 °C — hottest surface in our Solar System."
+        ],
+        [
+          "Atmosphere:",
+          "Extremely dense CO2 blanket with clouds of sulfuric acid."
+        ]
       ],
       "telemetry": {
         "gravity": "8.87 m/s²",
@@ -44,7 +69,8 @@
         "moons": 0,
         "orbitalSpeed": "35.0 km/s"
       },
-      "description": "Venus spins in the opposite direction to most planets. Its runaway greenhouse effect makes it the hottest planet."
+      "description": "Venus spins in the opposite direction to most planets. Its runaway greenhouse effect makes it the hottest planet.",
+      "image": "assets/planets/venus.jpg"
     },
     {
       "id": "earth",
@@ -56,10 +82,22 @@
       "accentColor": "#5bb0ff",
       "gradient": "linear-gradient(135deg, #0b2247 0%, #030a17 100%)",
       "facts": [
-        ["Distance:", "149.6 million km (1.00 AU) from the Sun."],
-        ["Year:", "365.25 Earth days."],
-        ["Temperature:", "Average surface temperature around 15 °C."],
-        ["Atmosphere:", "78% Nitrogen, 21% Oxygen — sheltering life and oceans."]
+        [
+          "Distance:",
+          "149.6 million km (1.00 AU) from the Sun."
+        ],
+        [
+          "Year:",
+          "365.25 Earth days."
+        ],
+        [
+          "Temperature:",
+          "Average surface temperature around 15 °C."
+        ],
+        [
+          "Atmosphere:",
+          "78% Nitrogen, 21% Oxygen — sheltering life and oceans."
+        ]
       ],
       "telemetry": {
         "gravity": "9.81 m/s²",
@@ -67,7 +105,8 @@
         "moons": 1,
         "orbitalSpeed": "29.8 km/s"
       },
-      "description": "Earth is our oasis in the cosmos — the only known world harboring active oceans and conscious life."
+      "description": "Earth is our oasis in the cosmos — the only known world harboring active oceans and conscious life.",
+      "image": "assets/planets/earth.jpg"
     },
     {
       "id": "mars",
@@ -79,10 +118,22 @@
       "accentColor": "#ff6d50",
       "gradient": "linear-gradient(135deg, #441712 0%, #110504 100%)",
       "facts": [
-        ["Distance:", "About 228 million km (1.52 AU) from the Sun."],
-        ["Year:", "One Martian year is equal to 687 Earth days."],
-        ["Temperature:", "Average -60 °C, dropping to -125 °C at winter poles."],
-        ["Atmosphere:", "95% Carbon dioxide with seasonal giant dust storms."]
+        [
+          "Distance:",
+          "About 228 million km (1.52 AU) from the Sun."
+        ],
+        [
+          "Year:",
+          "One Martian year is equal to 687 Earth days."
+        ],
+        [
+          "Temperature:",
+          "Average -60 °C, dropping to -125 °C at winter poles."
+        ],
+        [
+          "Atmosphere:",
+          "95% Carbon dioxide with seasonal giant dust storms."
+        ]
       ],
       "telemetry": {
         "gravity": "3.72 m/s²",
@@ -90,7 +141,8 @@
         "moons": 2,
         "orbitalSpeed": "24.1 km/s"
       },
-      "description": "Mars is home to Olympus Mons, the tallest volcano in the solar system, and ancient dried riverbeds."
+      "description": "Mars is home to Olympus Mons, the tallest volcano in the solar system, and ancient dried riverbeds.",
+      "image": "assets/planets/mars.jpg"
     },
     {
       "id": "jupiter",
@@ -102,10 +154,22 @@
       "accentColor": "#e8ba8c",
       "gradient": "linear-gradient(135deg, #3d2617 0%, #0e0703 100%)",
       "facts": [
-        ["Distance:", "778.5 million km (5.20 AU) from the Sun."],
-        ["Year:", "11.86 Earth years."],
-        ["Temperature:", "-110 °C at upper cloud tops."],
-        ["Atmosphere:", "Massive swirl of Hydrogen and Helium with the Great Red Spot."]
+        [
+          "Distance:",
+          "778.5 million km (5.20 AU) from the Sun."
+        ],
+        [
+          "Year:",
+          "11.86 Earth years."
+        ],
+        [
+          "Temperature:",
+          "-110 °C at upper cloud tops."
+        ],
+        [
+          "Atmosphere:",
+          "Massive swirl of Hydrogen and Helium with the Great Red Spot."
+        ]
       ],
       "telemetry": {
         "gravity": "24.79 m/s²",
@@ -113,7 +177,8 @@
         "moons": 95,
         "orbitalSpeed": "13.1 km/s"
       },
-      "description": "Jupiter is more than twice as massive as all other solar system planets combined."
+      "description": "Jupiter is more than twice as massive as all other solar system planets combined.",
+      "image": "assets/planets/jupiter.jpg"
     },
     {
       "id": "saturn",
@@ -125,10 +190,22 @@
       "accentColor": "#fae09c",
       "gradient": "linear-gradient(135deg, #382c16 0%, #0d0a04 100%)",
       "facts": [
-        ["Distance:", "1.43 billion km (9.58 AU) from the Sun."],
-        ["Year:", "29.45 Earth years."],
-        ["Temperature:", "Around -140 °C across cloud tops."],
-        ["Atmosphere:", "Hydrogen and Helium adorned by spectacular icy rings."]
+        [
+          "Distance:",
+          "1.43 billion km (9.58 AU) from the Sun."
+        ],
+        [
+          "Year:",
+          "29.45 Earth years."
+        ],
+        [
+          "Temperature:",
+          "Around -140 °C across cloud tops."
+        ],
+        [
+          "Atmosphere:",
+          "Hydrogen and Helium adorned by spectacular icy rings."
+        ]
       ],
       "telemetry": {
         "gravity": "10.44 m/s²",
@@ -136,7 +213,8 @@
         "moons": 146,
         "orbitalSpeed": "9.7 km/s"
       },
-      "description": "Adorned with thousands of beautiful ringlets composed of billions of chunks of ice and rock."
+      "description": "Adorned with thousands of beautiful ringlets composed of billions of chunks of ice and rock.",
+      "image": "assets/planets/saturn.jpg"
     },
     {
       "id": "uranus",
@@ -148,10 +226,22 @@
       "accentColor": "#99eef7",
       "gradient": "linear-gradient(135deg, #10333b 0%, #030d0f 100%)",
       "facts": [
-        ["Distance:", "2.87 billion km (19.2 AU) from the Sun."],
-        ["Year:", "84 Earth years."],
-        ["Temperature:", "-195 °C, the coldest planetary atmosphere."],
-        ["Atmosphere:", "Methane ice giving it a cyan hue, rotates on its side."]
+        [
+          "Distance:",
+          "2.87 billion km (19.2 AU) from the Sun."
+        ],
+        [
+          "Year:",
+          "84 Earth years."
+        ],
+        [
+          "Temperature:",
+          "-195 °C, the coldest planetary atmosphere."
+        ],
+        [
+          "Atmosphere:",
+          "Methane ice giving it a cyan hue, rotates on its side."
+        ]
       ],
       "telemetry": {
         "gravity": "8.69 m/s²",
@@ -159,7 +249,8 @@
         "moons": 28,
         "orbitalSpeed": "6.8 km/s"
       },
-      "description": "Uranus rotates at a nearly 98-degree tilt, rolling like a ball around the Sun."
+      "description": "Uranus rotates at a nearly 98-degree tilt, rolling like a ball around the Sun.",
+      "image": "assets/planets/uranus.jpg"
     },
     {
       "id": "neptune",
@@ -171,10 +262,22 @@
       "accentColor": "#6b8fff",
       "gradient": "linear-gradient(135deg, #09174a 0%, #020512 100%)",
       "facts": [
-        ["Distance:", "4.50 billion km (30.1 AU) from the Sun."],
-        ["Year:", "164.8 Earth years."],
-        ["Temperature:", "Average -200 °C."],
-        ["Atmosphere:", "Supersonic winds reaching over 2,100 km/h in deep blue methane."]
+        [
+          "Distance:",
+          "4.50 billion km (30.1 AU) from the Sun."
+        ],
+        [
+          "Year:",
+          "164.8 Earth years."
+        ],
+        [
+          "Temperature:",
+          "Average -200 °C."
+        ],
+        [
+          "Atmosphere:",
+          "Supersonic winds reaching over 2,100 km/h in deep blue methane."
+        ]
       ],
       "telemetry": {
         "gravity": "11.15 m/s²",
@@ -182,8 +285,8 @@
         "moons": 16,
         "orbitalSpeed": "5.4 km/s"
       },
-      "description": "Neptune is dark, cold, and whipped by supersonic winds, orbiting thirty times further than Earth."
+      "description": "Neptune is dark, cold, and whipped by supersonic winds, orbiting thirty times further than Earth.",
+      "image": "assets/planets/neptune.jpg"
     }
   ]
 }
-

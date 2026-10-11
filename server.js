@@ -78,6 +78,11 @@ app.use((req, res, next) => {
   next();
 });
 
+// Serve primary 3D experience at root
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'planet-jumping.html'));
+});
+
 // Serve static frontend files
 app.use(express.static(__dirname, {
   etag: true,
