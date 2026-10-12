@@ -1,7 +1,7 @@
 {
   "name": "YASH Cosmos • 3D Planetary Exploration Engine",
   "short_name": "YASH Cosmos",
-  "start_url": "/planet-jumping.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#090807",
   "theme_color": "#090807",

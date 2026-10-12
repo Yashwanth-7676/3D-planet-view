@@ -204,15 +204,39 @@ app.get('/api/trivia', (req, res) => {
   });
 });
 
-// Fallback to planet-jumping.html
+// Catch-all 404 for undefined API routes
+app.all('/api/*', (req, res) => {
+  res.status(404).json({ success: false, error: 'API endpoint not found' });
+});
+
+// Fallback to planet-jumping.html for SPA page routes
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'planet-jumping.html'));
 });
 
+// Robust Error Handling Middleware
+app.use((err, req, res, next) => {
+  if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+    return res.status(400).json({ success: false, error: 'Malformed JSON payload' });
+  }
+  console.error('Server error:', err);
+  res.status(500).json({ success: false, error: 'Internal Server Error' });
+});
+
 // Start server
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`⚡ [YASH Planetary Engine] Optimized Server running at http://localhost:${PORT}`);
   console.log(`🌌 In-memory cached dataset ready (${cachedPlanets.length} planets)`);
+});
+
+// Graceful shutdown handling
+process.on('SIGINT', () => {
+  console.log('Stopping server gracefully...');
+  server.close(() => process.exit(0));
+});
+process.on('SIGTERM', () => {
+  console.log('Terminating server gracefully...');
+  server.close(() => process.exit(0));
 });
 
 module.exports = app;

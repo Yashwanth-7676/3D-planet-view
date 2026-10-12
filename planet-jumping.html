@@ -9,6 +9,8 @@
 <link rel="preconnect" href="https://d2ol7oe51mr4n9.cloudfront.net" crossorigin>
 <link rel="dns-prefetch" href="https://d2ol7oe51mr4n9.cloudfront.net">
 <link rel="preload" as="image" href="assets/yash-logo.svg">
+<link rel="preload" as="image" href="assets/planets/mars.jpg">
+<link rel="preload" as="image" href="assets/planets/jupiter.jpg">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#090807">
 
@@ -386,11 +388,11 @@ body:not(.preload-complete):not(.intro-ready) .header,body:not(.preload-complete
   <section class="portal-wrap chrome" aria-label="Next destination">
     <div class="portal-heading">
       <span>Next:</span>
-      <span><span id="next-number">[03]</span> <strong id="next-name">Earth</strong></span>
+      <span><span id="next-number">[05]</span> <strong id="next-name">Jupiter</strong></span>
     </div>
-    <button class="portal" id="portal" type="button" aria-label="Travel to Earth">
-      <video id="portal-video" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/fc3ded42-e845-41f3-a830-5cab512d79cd.mp4" muted playsinline preload="auto" loop></video>
-      <img id="portal-image" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/d6fb8b6b-c15e-4aaa-9cf7-45bbb5e33372.jpg" alt="Portal Destination" crossorigin="anonymous">
+    <button class="portal" id="portal" type="button" aria-label="Travel to Jupiter">
+      <video id="portal-video" muted playsinline preload="none"></video>
+      <img id="portal-image" src="assets/planets/jupiter.jpg" alt="Portal Destination">
     </button>
   </section>
 
@@ -1812,6 +1814,14 @@ const finishPreloader = () => {
     pre.classList.add('is-background');
     pre.style.display = 'none';
   }
+  const preVideo = $('#preloader-video');
+  if(preVideo){
+    try {
+      preVideo.pause();
+      preVideo.removeAttribute('src');
+      preVideo.load();
+    } catch(e){}
+  }
   body.classList.add('preload-complete', 'intro-ready');
   
   render();
@@ -1955,7 +1965,7 @@ runPreloader();
 /* PWA OFFLINE CAPABILITY REGISTRATION */
 if('serviceWorker' in navigator && (location.protocol === 'http:' || location.protocol === 'https:')){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {});
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
   });
 }
 </script>

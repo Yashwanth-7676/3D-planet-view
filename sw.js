@@ -1,5 +1,7 @@
-const CACHE_NAME = 'yash-cosmos-v4';
+const CACHE_NAME = 'yash-cosmos-v5';
 const STATIC_ASSETS = [
+  '/',
+  '/planet-jumping.html',
   '/manifest.json',
   '/assets/yash-logo.svg',
   '/data/planets.json',
@@ -32,10 +34,13 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Network-First for HTML documents (always get fresh code), Cache-First for static assets
+// Network-First for HTML documents, Cache-First for static assets, Bypass dynamic API
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
   const url = new URL(event.request.url);
+
+  // Bypass dynamic API requests to ensure live telemetry & health checks
+  if (url.pathname.startsWith('/api/')) return;
 
   // If navigating or requesting HTML, ALWAYS fetch fresh from network
   if (event.request.mode === 'navigate' || event.request.destination === 'document' || url.pathname.endsWith('.html') || url.pathname === '/') {
@@ -48,7 +53,7 @@ self.addEventListener('fetch', event => {
           }
           return response;
         })
-        .catch(() => caches.match(event.request))
+        .catch(() => caches.match(event.request) || caches.match('/planet-jumping.html'))
     );
     return;
   }

@@ -1,12 +1,6 @@
 {
   "favorites": [
     {
-      "id": "mars",
-      "name": "Mars",
-      "savedAt": "2026-10-10T12:00:00.000Z",
-      "note": "Initial primary outpost expedition"
-    },
-    {
       "id": "mercury",
       "name": "Mercury",
       "savedAt": "2026-10-10T08:19:36.065Z",
